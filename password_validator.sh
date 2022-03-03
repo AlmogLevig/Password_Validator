@@ -105,8 +105,18 @@ function passwordValidation () {
 ################### Start Point #######################
 # # while loop for detect between -f to simple string
 #######################################################
-pswd=${1}
-# Calling to Password Validation Function
-passwordValidation $pswd
-
+while :; do
+case $1 in
+    -f)
+    pswd=$(< $2)
+    # Call Password Validation Function
+    passwordValidation $pswd
+    ;;
+    *)
+       pswd=${1}
+        # Call Password Validation Function
+        passwordValidation $pswd  
+    ;;
+esac
+done
 exit 1
